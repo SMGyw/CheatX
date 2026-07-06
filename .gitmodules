@@ -1,7 +1,6 @@
 [submodule "plugin/XbSymbolDatabase"]
 	path = plugin/XbSymbolDatabase
-	url = https://github.com/G0dLike/XbSymbolDatabase
-	branch = CheatX
+	url = https://github.com/Cxbx-Reloaded/XbSymbolDatabase
 [submodule "plugin/nxdk"]
 	path = plugin/nxdk
 	url = https://github.com/JayFoxRox/nxdk
