@@ -33,6 +33,8 @@ jobs:
       working-directory: ./plugin
       run: |
         export PATH=$PATH:/usr/bin
+        export CFLAGS="-Wno-implicit-function-declaration"
+        export CXXFLAGS="-Wno-implicit-function-declaration"
         make
 
     - name: upload artifacts
