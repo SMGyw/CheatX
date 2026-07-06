@@ -14,13 +14,13 @@ jobs:
       run: |
         mkdir -p plugin
         cd plugin
-        # سحب بيئة nxdk الرسمية
+        # سحب بيئة nxdk الرسمية والتحويل للفرع المطلوب
         git clone https://github.com/JayFoxRox/nxdk.git nxdk
         cd nxdk
         git checkout dxt
         cd ..
-        # تحميل قاعدة البيانات كملف مضغوط وتفكيكه لتفادي مشاكل الصلاحيات والـ Git
-        curl -L https://github.com/XboxDev/XbSymbolDatabase/archive/refs/heads/CheatX.tar.gz -o db.tar.gz
+        # تحميل قاعدة البيانات الرسمية من فرع master وتفكيكها
+        curl -L https://github.com/XboxDev/XbSymbolDatabase/archive/refs/heads/master.tar.gz -o db.tar.gz
         mkdir -p XbSymbolDatabase
         tar -xzf db.tar.gz -C XbSymbolDatabase --strip-components=1
         rm db.tar.gz
