@@ -14,10 +14,16 @@ jobs:
       run: |
         mkdir -p plugin
         cd plugin
-        git clone https://github.com/XboxDev/XbSymbolDatabase.git XbSymbolDatabase
+        # سحب بيئة nxdk الرسمية
         git clone https://github.com/JayFoxRox/nxdk.git nxdk
         cd nxdk
         git checkout dxt
+        cd ..
+        # تحميل قاعدة البيانات كملف مضغوط وتفكيكه لتفادي مشاكل الصلاحيات والـ Git
+        curl -L https://github.com/XboxDev/XbSymbolDatabase/archive/refs/heads/CheatX.tar.gz -o db.tar.gz
+        mkdir -p XbSymbolDatabase
+        tar -xzf db.tar.gz -C XbSymbolDatabase --strip-components=1
+        rm db.tar.gz
 
     - name: install deps
       run: sudo apt-get update -y && sudo apt-get install -y flex bison clang-8 lld-8
