@@ -23,7 +23,7 @@ jobs:
         git checkout dxt
 
     - name: install deps
-      run: sudo apt-get update -y && sudo apt-get install -y flex bison clang lld
+      run: sudo apt-get update -y && sudo apt-get install -y build-essential flex bison clang lld
 
     - name: build cdxt
       working-directory: ./plugin/nxdk/tools/cxbe
