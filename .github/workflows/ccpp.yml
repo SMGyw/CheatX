@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
       with:
@@ -23,7 +23,7 @@ jobs:
         git checkout dxt
 
     - name: install deps
-      run: sudo apt-get update -y && sudo apt-get install -y flex bison clang-8 lld-8
+      run: sudo apt-get update -y && sudo apt-get install -y flex bison clang lld
 
     - name: build cdxt
       working-directory: ./plugin/nxdk/tools/cxbe
@@ -32,7 +32,7 @@ jobs:
     - name: build CheatX
       working-directory: ./plugin
       run: |
-        export PATH=$PATH:/usr/lib/llvm-8/bin
+        export PATH=$PATH:/usr/bin
         make
 
     - name: upload artifacts
