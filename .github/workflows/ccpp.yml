@@ -30,6 +30,11 @@ jobs:
         echo "=== XbSymbolDatabase include directory ==="
         ls -la plugin/XbSymbolDatabase/include/ 2>/dev/null || echo "include directory not found"
 
+    - name: Install LLVM 8
+      uses: KyleMayes/install-llvm-action@v2
+      with:
+        version: "8.0.1"
+
     - name: install deps
       run: |
         sudo apt-get update -y && sudo apt-get install -y build-essential libc6-dev flex bison
@@ -49,7 +54,3 @@ jobs:
         export CFLAGS="-Wno-implicit-function-declaration -I./XbSymbolDatabase/include"
         export CXXFLAGS="-Wno-implicit-function-declaration -I./XbSymbolDatabase/include"
         make CC=clang-8 CXX=clang++-8 AS=clang-8 LD="lld-8 -flavor link"
-    - name: Install LLVM 8
-      uses: KyleMayes/install-llvm-action@v2
-      with:
-        version: "8.0.1"
