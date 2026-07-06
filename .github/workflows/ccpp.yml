@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v4
       with:
@@ -14,11 +14,7 @@ jobs:
       run: |
         mkdir -p plugin
         cd plugin
-        
-        # سحب قاعدة البيانات الأصلية والرسمية والمتاحة للعامة
         git clone https://github.com/Cxbx-Reloaded/XbSymbolDatabase.git XbSymbolDatabase
-        
-        # سحب بيئة nxdk والتحويل لفرع dxt (نجحت بالفعل في محاولتك السابقة)
         git clone https://github.com/JayFoxRox/nxdk.git nxdk
         cd nxdk
         git checkout dxt
