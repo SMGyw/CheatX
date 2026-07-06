@@ -1,6 +1,6 @@
 #include "inputhook.h"
 
-#include "XbSymbolDatabase.h"
+//#include "XbSymbolDatabase.h"
 
 // CheatX hooked xinput state
 XINPUT_GAMEPAD pad;
@@ -50,7 +50,7 @@ VOID CDECL scanned_func(const char* library_str, uint32_t library_flag, const ch
 
 VOID InstallGetStateHook() {
     // Scan for XInputGetState location first
-    XbSymbolScan((PVOID)0x00010000, scanned_func, false);
+    // XbSymbolScan((PVOID)0x00010000, scanned_func, false);
     
     // Store first 6 original bytes where jump will be written
     memcpy(old_bytes, (PVOID)Addr_XInputGetState, 6);
