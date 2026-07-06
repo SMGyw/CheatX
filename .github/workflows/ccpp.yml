@@ -14,10 +14,11 @@ jobs:
       run: |
         mkdir -p plugin
         cd plugin
-        # سحب قاعدة البيانات الرسمية بشكل صريح بدون بروتوكول الذكاء الذاتي لـ git
-        git clone --config transfer.fsckobjects=false https://github.com/XboxDev/XbSymbolDatabase.git XbSymbolDatabase
         
-        # سحب بيئة nxdk والتحويل لفرع dxt
+        # سحب قاعدة البيانات الأصلية والرسمية والمتاحة للعامة
+        git clone https://github.com/Cxbx-Reloaded/XbSymbolDatabase.git XbSymbolDatabase
+        
+        # سحب بيئة nxdk والتحويل لفرع dxt (نجحت بالفعل في محاولتك السابقة)
         git clone https://github.com/JayFoxRox/nxdk.git nxdk
         cd nxdk
         git checkout dxt
