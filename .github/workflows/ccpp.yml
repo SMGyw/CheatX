@@ -10,7 +10,7 @@ jobs:
       with:
         submodules: false
 
-        - name: Manual Submodule Setup
+    - name: Manual Submodule Setup
       run: |
         mkdir -p plugin
         cd plugin
