@@ -1,6 +1,6 @@
 #include "inputhook.h"
 
-#include "XbSymbolDatabase/XbSymbolDatabase.h"
+#include "XbSymbolDatabase.h"
 
 // CheatX hooked xinput state
 XINPUT_GAMEPAD pad;
