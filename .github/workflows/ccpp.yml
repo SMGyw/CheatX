@@ -10,12 +10,12 @@ jobs:
       with:
         submodules: false
 
-    - name: Manual Submodule Setup
+        - name: Manual Submodule Setup
       run: |
         mkdir -p plugin
         cd plugin
-        git clone https://github.com/G0dLike/XbSymbolDatabase.git
-        git clone https://github.com/JayFoxRox/nxdk.git
+        git clone https://github.com/XboxDev/XbSymbolDatabase.git XbSymbolDatabase
+        git clone https://github.com/JayFoxRox/nxdk.git nxdk
         cd nxdk
         git checkout dxt
 
