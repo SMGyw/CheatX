@@ -6,39 +6,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # الخطوة 1: سحب الكود الأساسي فقط بدون المجلدات الفرعية المعطوبة
     - uses: actions/checkout@v4
       with:
         submodules: false
 
-    # الخطوة 2: بناء مجلد الملحقات وتحميل المستودعات الشغالة يدوياً
     - name: Manual Submodule Setup
       run: |
-        rm -rf plugin/XbSymbolDatabase plugin/nxdk
         mkdir -p plugin
         cd plugin
-        git clone https://github.com/G0dLike/XbSymbolDatabase.git XbSymbolDatabase
-        git clone https://github.com/JayFoxRox/nxdk.git nxdk
+        git clone https://github.com/G0dLike/XbSymbolDatabase.git
+        git clone https://github.com/JayFoxRox/nxdk.git
         cd nxdk
         git checkout dxt
 
-    # الخطوة 3: تثبيت حزم المطورين المطلوبة للبناء
     - name: install deps
       run: sudo apt-get update -y && sudo apt-get install -y flex bison clang-8 lld-8
 
-    # الخطوة 4: بناء أداة cxbe الخاصة بالـ nxdk
     - name: build cdxt
       working-directory: ./plugin/nxdk/tools/cxbe
       run: make
 
-    # الخطوة 5: بناء مشروع CheatX الأساسي
     - name: build CheatX
       working-directory: ./plugin
       run: |
         export PATH=$PATH:/usr/lib/llvm-8/bin
         make
 
-    # الخطوة 6: رفع الملفات الناتجة لتصبح جاهزة للتحميل
     - name: upload artifacts
       uses: actions/upload-artifact@v4
       with:
