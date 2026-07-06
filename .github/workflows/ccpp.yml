@@ -14,16 +14,13 @@ jobs:
       run: |
         mkdir -p plugin
         cd plugin
-        # سحب بيئة nxdk الرسمية والتحويل للفرع المطلوب
+        # سحب قاعدة البيانات الرسمية بشكل صريح بدون بروتوكول الذكاء الذاتي لـ git
+        git clone --config transfer.fsckobjects=false https://github.com/XboxDev/XbSymbolDatabase.git XbSymbolDatabase
+        
+        # سحب بيئة nxdk والتحويل لفرع dxt
         git clone https://github.com/JayFoxRox/nxdk.git nxdk
         cd nxdk
         git checkout dxt
-        cd ..
-        # تحميل قاعدة البيانات الرسمية من فرع master وتفكيكها
-        curl -L https://github.com/XboxDev/XbSymbolDatabase/archive/refs/heads/master.tar.gz -o db.tar.gz
-        mkdir -p XbSymbolDatabase
-        tar -xzf db.tar.gz -C XbSymbolDatabase --strip-components=1
-        rm db.tar.gz
 
     - name: install deps
       run: sudo apt-get update -y && sudo apt-get install -y flex bison clang-8 lld-8
