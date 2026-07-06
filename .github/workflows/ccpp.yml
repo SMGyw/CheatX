@@ -17,7 +17,7 @@ jobs:
       run: |
         mkdir -p plugin
         cd plugin
-        git clone https://github.com/Cxbx-Reloaded/XbSymbolDatabase.git XbSymbolDatabase
+        git clone --recursive https://github.com/Cxbx-Reloaded/XbSymbolDatabase.git XbSymbolDatabase
         git clone --recursive https://github.com/JayFoxRox/nxdk.git nxdk
         cd nxdk
         git checkout dxt
