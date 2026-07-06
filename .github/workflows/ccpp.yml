@@ -31,13 +31,7 @@ jobs:
         ls -la plugin/XbSymbolDatabase/include/ 2>/dev/null || echo "include directory not found"
 
     - name: install deps
-      run: |
-        sudo apt-get update -y && sudo apt-get install -y build-essential libc6-dev flex bison
-        wget -O - https://apt.llvm.org/llvm.sh > llvm.sh
-        chmod +x llvm.sh
-        sudo ./llvm.sh 8
-        sudo apt-get install -y clang-8 lld-8
-
+      run: sudo apt-get update -y && sudo apt-get install -y build-essential libc6-dev flex bison clang lld
     - name: build cdxt
       working-directory: ./plugin/nxdk/tools/cxbe
       run: make
@@ -48,4 +42,9 @@ jobs:
         export PATH=$PATH:/usr/bin
         export CFLAGS="-Wno-implicit-function-declaration -I./XbSymbolDatabase/include"
         export CXXFLAGS="-Wno-implicit-function-declaration -I./XbSymbolDatabase/include"
-        make CC=clang-8 CXX=clang++-8 AS=clang-8 LD="lld-8 -flavor link"
+                make
+    - name: upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: CheatX-Build
+        path: plugin/bin/
