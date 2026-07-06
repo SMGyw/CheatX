@@ -1,4 +1,4 @@
-name: Github Ci
+name: Github CI
 
 on: [push, pull_request]
 
