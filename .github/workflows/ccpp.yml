@@ -20,7 +20,7 @@ jobs:
         export PATH=$PATH:/usr/lib/llvm-8/bin
         make
     - name: upload artifacts
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: CheatX
         path: plugin/bin
